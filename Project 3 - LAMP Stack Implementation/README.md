@@ -1,6 +1,6 @@
 # Deploying a LAMP Stack Web Application on AWS Cloud
 ***
-A LAMP Stack is a solution stack that is being used in deploying web applications. It stands for Linux, Apache, MySql and php,perl or python. 
+A LAMP Stack is a solution stack that is being used in deploying web applications. It stands for Linux, Apache, MySql and php, perl or python. 
 
 **Linux**: this is an operating system which serves as the backbone of the LAMP Stack, and it is actively used in deploying other components.
 
@@ -25,7 +25,7 @@ Then I connected into the instance using git bash `ssh -i <private-key-name>.pem
 1. To Install Apache I used the command `sudo apt install apache2`
 ![Alt text](<Images/Screenshot (134).png>)
 
-2. Then I checked itwas running with the `sudo systemctl status apache2`
+2. Then I checked it was running with the `sudo systemctl status apache2`
 ![Alt text](<Images/Screenshot (135).png>)
 
 3. Then I created a rule on the Instance to allow connection through port 80.![Alt text](<Images/Screenshot (150).png>)
@@ -44,10 +44,10 @@ Then I connected into the instance using git bash `ssh -i <private-key-name>.pem
 ![Alt text](<Images/Screenshot (137).png>)
 
 2. Then I used `sudo mysql` to login to the MySQL console. After which I used `ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'PassWord.1';` to give the root user a password.
-Then I exited the MySQL console and used `sudo mysql_secure_installation`. I put in the password and answerd yesfor all questions and setting a password validation of 1.
+Then I exited the MySQL console and used `sudo mysql_secure_installation`. I put in the password and answered yes for all questions and setting a password validation of 1.
 ![Alt text](<Images/Screenshot (138).png>)
 
-3. Then I logged back in to the console with `sudo mysql -p` to test, and typed in the password. Then I exited the video
+3. Then I logged back in to the console with `sudo mysql -p` to test, and typed in the password. Then I exited the console.
 ![Alt text](<Images/Screenshot (139).png>)
 
 
