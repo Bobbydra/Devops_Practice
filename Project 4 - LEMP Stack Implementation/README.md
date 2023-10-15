@@ -116,4 +116,59 @@ phpinfo();
 3. I then used `sudo rm /var/www/your_domain/info.php` to delete the info.php file
 ![Alt text](<Images/Screenshot (167-2).png>)
 
+## Retreive data from MySQL
+
+1. Login to the console using `sudo mysql -p`
+
+2. Create an example database `CREATE DATABASE 'example_database';`
+
+3. Create a new user with a pass word. `CREATE USER 'example_user'@'%' IDENTIFIED WITH mysql_native_password BY 'PassWord.1';`
+
+4. Then give the user access to the database. `GRANT ALL ON example_database.* TO 'example_user'@'%';` - This gives him all priviledges on example database.
+Then exit.
+
+5. We can test if the user has the permissions by logging in as the user. Use `mysql -u example_user -p` and type in the password.
+
+6. To confirm that you have access to example database, type in `SHOW DATABASES;`.
+
+7. Next, create a test table using `CREATE TABLE example_database.todo_list (item_id INT AUTO_INCREMENT,content VARCHAR(255),PRIMARY KEY(item_id));`
+
+8. Insert a row into the test table. `INSERT INTO example_database.todo_list (content) VALUES ("My first important item");`
+
+9. Query the table. `SELECT * FROM example_database.todo_list;`. Then exit.
+
+10. Next, we create and open a PHP file in projectLEMP directory. Using `nano /var/www/projectLEMP/todo_list.php`. Then paste the following in it: 
+```
+<?php
+$user = "example_user";
+$password = "PassWord.1";
+$database = "example_database";
+$table = "todo_list";
+
+try {
+  $db = new PDO("mysql:host=localhost;dbname=$database", $user, $password);
+  echo "<h2>TODO</h2><ol>";
+  foreach($db->query("SELECT content FROM $table") as $row) {
+    echo "<li>" . $row['content'] . "</li>";
+  }
+  echo "</ol>";
+} catch (PDOException $e) {
+    print "Error!: " . $e->getMessage() . "<br/>";
+    die();
+}
+```
+
+11. Next, use `http://<Public_domain_or_IP>/todo_list.php` access the page.
+![Alt text](<Images/Screenshot (167-3).png>)
+![Alt text](<Images/Screenshot (168).png>)
+![Alt text](<Images/Screenshot (160).png>)
+![Alt text](<Images/Screenshot (161).png>)
+
+
+
+
+
+
+
+
 
