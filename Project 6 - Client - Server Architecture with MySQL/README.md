@@ -1,4 +1,4 @@
-# Client - Server Architecture with MySQL Server and MySQL Slient
+# Client - Server Architecture with MySQL Server and MySQL Client
 
 ## Project Architecture
 ![alt text](<Images/Screenshot (125).jpg>)
